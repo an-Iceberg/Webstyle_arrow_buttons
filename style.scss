@@ -1,0 +1,92 @@
+@mixin flex($direction: column, $content: center, $align: center, $gap: 30px, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+$background_color: #000;
+
+:root {
+  font-size: 16px;
+  --color: #000;
+}
+
+*, *:is(::after, ::before) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: 1rem "Veranda", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  @include flex($direction: row, $wrap: wrap);
+  background-color: $background_color;
+
+  button {
+    &:nth-child(6n) { --color: #f00; }
+    &:nth-child(6n + 1) { --color: #0f0; }
+    &:nth-child(6n + 2) { --color: #77f; }
+    &:nth-child(6n + 3) { --color: #ff0; }
+    &:nth-child(6n + 4) { --color: #f0f; }
+    &:nth-child(6n + 5) { --color: #0ff; }
+    &:nth-child(6n + 6) { --color: #fff; }
+
+    background-color: $background_color;
+    border-radius: 10px;
+    border: 2px solid var(--color);
+    width: 80px;
+    height: 40px;
+    font-size: 2.5rem;
+    @include flex($gap: 0px);
+    transition: all .3s;
+
+    svg {
+      max-height: 30px;
+      width: 100%;
+
+      path, polygon {
+        fill: var(--color);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color);
+      transition: all .3s;
+
+      svg {
+        path, polygon {
+          animation: arrow_right_anim .5s ease-in-out 0s forwards;
+        }
+      }
+
+      @keyframes arrow_right_anim {
+        0% {
+          translate: 0 0;
+          opacity: 1;
+          fill: var(--color);
+        }
+        49% {
+          translate: 100% 0;
+          opacity: 0;
+          fill: var(--color);
+        }
+        50% {
+          translate: -100%;
+          opacity: 0;
+          fill: $background_color;
+        }
+        100% {
+          translate: 0 0;
+          opacity: 1;
+          fill: $background_color;
+        }
+      }
+    }
+  }
+}

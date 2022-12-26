@@ -1,0 +1,98 @@
+:root {
+  font-size: 16px;
+  --color: #000;
+}
+
+*, *:is(::after, ::before) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: 1rem "Veranda", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  background-color: #000;
+}
+body button {
+  background-color: #000;
+  border-radius: 10px;
+  border: 2px solid var(--color);
+  width: 80px;
+  height: 40px;
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
+  transition: all 0.3s;
+}
+body button:nth-child(6n) {
+  --color: #f00;
+}
+body button:nth-child(6n+1) {
+  --color: #0f0;
+}
+body button:nth-child(6n+2) {
+  --color: #77f;
+}
+body button:nth-child(6n+3) {
+  --color: #ff0;
+}
+body button:nth-child(6n+4) {
+  --color: #f0f;
+}
+body button:nth-child(6n+5) {
+  --color: #0ff;
+}
+body button:nth-child(6n+6) {
+  --color: #fff;
+}
+body button svg {
+  max-height: 30px;
+  width: 100%;
+}
+body button svg path, body button svg polygon {
+  fill: var(--color);
+}
+body button:hover {
+  cursor: pointer;
+  background-color: var(--color);
+  transition: all 0.3s;
+}
+body button:hover svg path, body button:hover svg polygon {
+  animation: arrow_right_anim 0.5s ease-in-out 0s forwards;
+}
+@keyframes arrow_right_anim {
+  0% {
+    translate: 0 0;
+    opacity: 1;
+    fill: var(--color);
+  }
+  49% {
+    translate: 100% 0;
+    opacity: 0;
+    fill: var(--color);
+  }
+  50% {
+    translate: -100%;
+    opacity: 0;
+    fill: #000;
+  }
+  100% {
+    translate: 0 0;
+    opacity: 1;
+    fill: #000;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
